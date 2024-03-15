@@ -1,0 +1,3 @@
+This is a timezone converter used for the Technology Services notifications drafted by Service Desk. The outage times are entered and then converted into each location's timezone. 
+The table is then generate to be copied into the email template.
+*I've included the JS and CSS portions in the head of this HTML file for the sake of ease of use by the team as this is used locally*
