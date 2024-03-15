@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+	<head>
+		<title>Timezone</title>
+		
+		<script>
+			function convertTime(){
+				//Display memo
+				var memo = document.getElementById("memo");
+				memo.style.display = "block";
+			
+				//Get start/end times
+				let startTime = new Date(document.getElementById("startTime").value);
+				let endTime = new Date(document.getElementById("endTime").value);
+				
+				//Generate list of time zones
+				let timeZones = ['Atlantic/Bermuda', 'America/Virgin', 'America/Cayman', 'Asia/Hong_Kong', 'Europe/London', 'Asia/Singapore'];
+				let timeZoneNames = ['Bermuda', 'British Virgin Islands', 'Cayman Islands', 'Hong Kong', 'London', 'Singapore'];
+	
+				//clear table
+				let tableBody = document.getElementById('timeZoneTable');
+				tableBody.innerHTML = '';
+				
+				//loop through and convert to all timeZones
+				let count=0;
+				timeZones.forEach((timeZone) =>{
+					let convStartTime = convertTimezone(startTime, timeZone);
+					let convEndTime = convertTimezone(endTime, timeZone);
+					addTableRow(timeZoneNames[count], convStartTime, convEndTime);
+					count++;
+				});
+			}
+			
+			function convertTimezone(time, timeZone){
+				let options = {timeZone: timeZone, month: 'long', day: 'numeric', hour12: false, hour: 'numeric', minute: 'numeric', };
+				let timeString = time.toLocaleString('en-US', options);
+				let finalDate = timeString.split(' at ')[0] + ', ' + timeString.split(' at ')[1] + ' hrs';
+				return finalDate;
+			}
+			
+			function addTableRow(timeZone, convStartTime, convEndTime){
+				let tableBody = document.getElementById("timeZoneTable");
+				let newRow = tableBody.insertRow(-1);
+				let cell1 = newRow.insertCell(0);
+				let cell2 = newRow.insertCell(1);
+				let cell3 = newRow.insertCell(2);
+				cell1.textContent = timeZone;
+				cell2.textContent = convStartTime;
+				cell3.textContent = convEndTime;
+			}
+				
+		</script>
+		
+		<style>
+			body{
+				padding: 20px;
+				width: 50%;
+				margin: auto;
+				font-family: Arial;
+				font-size: 16px;
+			}
+			
+			table tr, td, th{
+				border: 1px solid;
+				padding: 10px;
+			}
+			
+			table{
+				border-collapse:collapse;
+				border: 1px solid;
+				color: #58595B;	
+			}
+			
+			#memo{
+				display:none;
+				background-color: yellow;
+				width: 50%;
+				padding: 5px;
+				text-align: center;
+				border: 1px solid black;
+
+			}
+		</style>
+	</head>
+	
+	<body>
+		<H1>Timezone Converter for TS Notifications</H1>
+		
+		<label for="startTime">Start time:</label>
+		<input type="datetime-local" id="startTime" name="startTime">
+			
+		<label for="endTime">End time:</label>
+		<input type="datetime-local" id="endTime" name="endTime">
+			
+		<button onclick="convertTime()">Convert</button>
+
+		<br>
+		<br>
+		
+		<h2>Results</h2>
+		<table>
+			<thead>
+				<th>Geography</th>
+				<th>Outage Start (local time)</th>
+				<th>Outage Finish (local time)</th>
+			</thead>
+			<tbody id="timeZoneTable">
+			
+			</tbody>
+		</table>
+		<br><br>
+		
+		<div id="memo">
+		<p>You may have to change the font/size to <strong>Arial 12</strong> if pasting in Outlook</p>
+		</div>
+			
+		
+	</body>
+	<footer>
+	</footer>
+
+</html>
