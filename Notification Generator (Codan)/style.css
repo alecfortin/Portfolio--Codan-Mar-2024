@@ -1,0 +1,38 @@
+
+/* This initializes the email generation sections to be hidden (until the JS button is pressed)*/
+#generatedEmail{
+	display: none;
+}
+
+body{
+	padding: 20px;
+	width: 50%;
+	margin: auto;
+	font-family: Arial;
+	color: #58595B;	
+}
+
+hr {
+	border: none;
+	height: 1px;
+	width: 50%;
+}	
+
+.colOne{
+	font-weight: bold;
+}
+
+
+#message{
+	color: #1F497D;
+	font-weight: bold;
+}
+
+#emailFooter{
+	font-size: 10px;
+}
+
+#timeZoneTable th{
+	font-weight: bold;
+}
+
