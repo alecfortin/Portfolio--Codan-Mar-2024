@@ -1,0 +1,2 @@
+This is a continuation of the Time Converter. In theory, this would generate the full notification to be sent out. My ultimate goal was to be able to generate the notification in a new email within Outlook.
+There were limitations with formatting confirmed by a few different online sources, however this was only my second time ever using JS (first was the Time Converter) so it's a notable mention!
