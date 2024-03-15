@@ -1,0 +1,7 @@
+Beginning stages of a side scrolling "shooter" game
+
+Current functionality:
+- Ghost animations: Idle, Shoot, (Death, Hurt not shown yet)
+- Ghost shooting: spawns projectile which instantiates a prefab with a TTL, destroys enemies
+- Endless scrolling parallax background
+- Primitives used as placeholder for enemies for now
